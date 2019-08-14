@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux';
 // Reducers
-import { reducer as recruiters } from 'modules/recruiters';
-import test, * as fromTest from './test.reducer';
+import { reducer as test, selectors as fromTest } from 'modules/counter';
 
-export default combineReducers({ test, recruiters });
+export default combineReducers({ test });
 
 export const selectors = {
   test: {

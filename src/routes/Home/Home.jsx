@@ -2,12 +2,12 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // Actions
-import * as actions from '../../actions/test.action';
+import * as actions from 'modules/counter/test.action';
 // Components
-import Counter from '../../components/Counter';
-import { selectors } from '../../reducers';
+import Counter from 'components/Counter';
+import { selectors } from 'reducers';
 // Utils
-import { valueType } from '../../components/UtilPropTypes';
+import { valueType } from 'components/UtilPropTypes';
 
 class Home extends PureComponent {
   static propTypes = {
