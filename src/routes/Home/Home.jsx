@@ -2,35 +2,31 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // Actions
-import * as actions from 'modules/counter/test.action';
+import * as actions from '@/modules/counter/counter.action';
 // Components
 import Counter from 'components/Counter';
-import { selectors } from 'reducers';
+import { selectors } from 'modules/counter';
 // Utils
 import { valueType } from 'components/UtilPropTypes';
 
 class Home extends PureComponent {
   static propTypes = {
     // State
-    counter: valueType.isRequired,
+    count: valueType.isRequired,
     // Actions
-    addCounter: PropTypes.func.isRequired,
-    minusCounter: PropTypes.func.isRequired,
+    increment: PropTypes.func.isRequired,
+    decrement: PropTypes.func.isRequired,
   };
 
   render() {
-    const { counter, addCounter, minusCounter } = this.props;
-    return (
-      <Counter counter={counter} onAdd={addCounter} onMinus={minusCounter} />
-    );
+    const { count, increment, decrement } = this.props;
+    return <Counter counter={count} onAdd={increment} onMinus={decrement} />;
   }
 }
 
-const mapStateToProps = state => ({
-  counter: selectors.test.selectCounter(state),
-});
-
 export default connect(
-  mapStateToProps,
+  state => ({
+    count: selectors.selectCountJS(state),
+  }),
   actions,
 )(Home);

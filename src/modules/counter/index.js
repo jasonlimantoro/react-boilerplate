@@ -1,4 +1,5 @@
-import reducer, * as selectors from './test.reducer';
-import service from './test.service';
+import reducer from './counter.reducer';
+import * as selectors from './counter.selectors';
 
-export { reducer, selectors, service };
+export default reducer;
+export { selectors };

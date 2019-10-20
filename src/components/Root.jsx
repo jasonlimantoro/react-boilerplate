@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import rootReducer from '../reducers';
-import createStore from '../store/createStore';
-import App from '../routes';
+import rootReducer from 'modules';
+import createStore from 'store/createStore';
+import App from 'routes';
 
 const Root = ({ config }) => {
   return (
