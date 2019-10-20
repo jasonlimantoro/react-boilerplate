@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // Actions
@@ -9,20 +9,17 @@ import { selectors } from 'modules/counter';
 // Utils
 import { valueType } from 'components/UtilPropTypes';
 
-class Home extends PureComponent {
-  static propTypes = {
-    // State
-    count: valueType.isRequired,
-    // Actions
-    increment: PropTypes.func.isRequired,
-    decrement: PropTypes.func.isRequired,
-  };
+const Home = ({ count, increment, decrement }) => {
+  return <Counter counter={count} onAdd={increment} onMinus={decrement} />;
+};
 
-  render() {
-    const { count, increment, decrement } = this.props;
-    return <Counter counter={count} onAdd={increment} onMinus={decrement} />;
-  }
-}
+Home.propTypes = {
+  // State
+  count: valueType.isRequired,
+  // Actions
+  increment: PropTypes.func.isRequired,
+  decrement: PropTypes.func.isRequired,
+};
 
 export default connect(
   state => ({
