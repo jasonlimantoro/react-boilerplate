@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // Actions
-import * as actions from '@/modules/counter/counter.action';
+import { actions, selectors } from '@/counter';
 // Components
 import Counter from 'components/Counter';
-import { selectors } from 'modules/counter';
 // Utils
 import { valueType } from 'components/UtilPropTypes';
 

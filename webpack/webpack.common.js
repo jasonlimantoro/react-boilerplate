@@ -59,7 +59,7 @@ module.exports = {
     extensions: ['*', '.js', '.jsx', '.css', '.scss'],
     alias: {
       images: commonPaths.imagesAliasFolder,
-      '@': commonPaths.entryDirPath,
+      '@': commonPaths.moduleDirPath,
     },
   },
   plugins: [new webpack.ProgressPlugin()],
