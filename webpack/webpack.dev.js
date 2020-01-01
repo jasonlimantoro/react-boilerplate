@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const commonPaths = require('./paths');
 
 module.exports = {
@@ -13,7 +14,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(css|scss)$/,
+        // css module
+        test: /\.module\.(css|scss)$/,
         use: [
           'style-loader',
           {
@@ -25,6 +27,26 @@ module.exports = {
               localIdentName: '[local]___[hash:base64:5]',
             },
           },
+          {
+            loader: 'sass-loader',
+            options: {
+              includePaths: [commonPaths.styleSheetPath],
+            },
+          },
+        ],
+      },
+      {
+        // regular stylesheet
+        test: /\.(css|scss)$/,
+        exclude: /\.module\.(css|scss)$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: true,
+            },
+          },
+          'css-loader',
           {
             loader: 'sass-loader',
             options: {
@@ -61,6 +83,10 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: commonPaths.templatePath,
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     }),
   ],
 };
