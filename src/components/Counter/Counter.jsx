@@ -1,21 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'antd';
+import { boxShadow } from 'styled-system';
+import styled from '@emotion/styled';
+import shouldForwardProp from '@styled-system/should-forward-prop';
+
 // Utils
 import { valueType } from '../UtilPropTypes';
 // Styles
-import styles from './styles.scss';
+import styles from './styles.module.scss';
+
+const StyledButton = styled(Button, {
+  shouldForwardProp,
+})(boxShadow);
 
 const Counter = ({ counter, onAdd, onMinus }) => {
   return (
     <div className={styles.counter__container}>
       <span className={styles.counter__display}>Counter: {counter}</span>
       <div>
-        <button type="button" onClick={onAdd}>
+        <StyledButton boxShadow="normal" onClick={onAdd}>
           +
-        </button>
-        <button type="button" onClick={onMinus}>
-          -
-        </button>
+        </StyledButton>
+        <StyledButton onClick={onMinus}>-</StyledButton>
       </div>
     </div>
   );
