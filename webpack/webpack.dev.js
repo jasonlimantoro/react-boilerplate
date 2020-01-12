@@ -40,12 +40,7 @@ module.exports = {
         test: /\.(css|scss)$/,
         exclude: /\.module\.(css|scss)$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: true,
-            },
-          },
+          'style-loader',
           'css-loader',
           {
             loader: 'sass-loader',
@@ -63,24 +58,10 @@ module.exports = {
     compress: true,
     hot: true,
     disableHostCheck: true,
-    proxy: {
-      '/api': {
-        target: 'http://localhost:5000',
-        changeOrigin: true,
-        secure: false,
-      },
-    },
   },
   devtool: '#source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.EnvironmentPlugin({
-      NODE_ENV: 'development',
-      DEBUG: true,
-      API_URL: 'http://localhost:5000/api',
-      GOOGLE_CLIENT_ID:
-        '737507115735-rm7027jki9vv0k2r12a800pc846h62f6.apps.googleusercontent.com',
-    }),
     new HtmlWebpackPlugin({
       template: commonPaths.templatePath,
     }),

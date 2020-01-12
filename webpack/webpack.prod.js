@@ -15,7 +15,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(css|scss)$/,
+        // css module
+        test: /\.module\.(css|scss)$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
@@ -30,7 +31,22 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              includePaths: [commonPaths.entryDirPath],
+              includePaths: [commonPaths.styleSheetPath],
+            },
+          },
+        ],
+      },
+      {
+        // regular stylesheet
+        test: /\.(css|scss)$/,
+        exclude: /\.module\.(css|scss)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              includePaths: [commonPaths.styleSheetPath],
             },
           },
         ],
