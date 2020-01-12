@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -63,11 +62,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: `${commonPaths.cssFolder}/[name].[chunkhash].css`,
       chunkFilename: '[name].[chunkhash].css',
-    }),
-    new webpack.EnvironmentPlugin({
-      NODE_ENV: 'production',
-      DEBUG: false,
-      API_URL: '/api',
     }),
   ],
   devtool: 'source-map',
